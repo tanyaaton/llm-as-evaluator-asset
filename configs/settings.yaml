@@ -1,0 +1,87 @@
+default:
+  Title: watsonx evaluation
+
+development:
+  generate_answer:
+    question_csv_location: csv_files_example/ # change location
+    question_csv_name: question.csv # change
+    llm_generate:
+      source: watsonxai # choose: [watsonxai, openai, huggingface]
+      name: meta-llama/llama-3-1-8b-instruct # Input LLM ID (eg. mistralai/mistral-large , meta-llama/llama-3-1-8b-instruct , gpt-3.5-turbo-0125)
+      decoding_method: "greedy"
+      max_new_tokens: 500
+      min_new_tokens: 30
+      repetition_penalty: 1
+    embedder_model:
+      source: huggingface  # choose: [watsonxai, huggingface]
+      name: kornwtp/simcse-model-phayathaibert
+      chunk_size: 1200
+      overlap_size: 200
+
+  faithfulness:
+    content_csv_location: csv_files_example/ # change location
+    content_csv_name: content.csv # file generated from generate_answer.py
+    llm_divide:
+      source: watsonxai
+      name: meta-llama/llama-3-1-70b-instruct
+      prompt_language: TH
+      decoding_method: "greedy"
+      max_new_tokens: 1000
+      min_new_tokens: 30
+      repetition_penalty: 1
+      prompt_location: some_location.txt
+    llm_eval:
+      source: watsonxai 
+      name: meta-llama/llama-3-1-70b-instruct 
+      prompt_language: EN 
+      decoding_method: "greedy" 
+      max_new_tokens: 500
+      min_new_tokens: 30
+      repetition_penalty: 1
+      prompt_location: 
+
+  answer_relevancy:
+    content_csv_location: csv_files_example/ # change
+    content_csv_name: content.csv # file generated from generate_answer.py
+    embedder_model: 
+      # source: watsonxai
+      # name: ibm/slate-125m-english-rtrvr
+      source: huggingface
+      name: kornwtp/simcse-model-phayathaibert
+    llm_predict:
+      source: watsonxai 
+      name: meta-llama/llama-3-1-70b-instruct 
+      decoding_method: "greedy"
+      max_new_tokens: 300
+      min_new_tokens: 30
+      repetition_penalty: 1
+
+  customized_matrics:
+    content_csv_location: csv_files_example/ # change
+    content_csv_name: content.csv # file generated from generate_answer.py
+    ground_truth_csv_location: csv_files_example/groundtruth.csv # change
+    llm_eval:
+      source: watsonxai 
+      name: meta-llama/llama-3-1-70b-instruct 
+      prompt_language: EN 
+      decoding_method: "greedy" 
+      max_new_tokens: 3
+      min_new_tokens: 0
+      repetition_penalty: 1
+      prompt_location: 
+  
+  compare:
+    file_location: csv_files_example/
+    metric: faithfulness  # choose: [faithfulness, answer_relevancy, customized_matrics]
+    file_name_list:
+      # faithfulness
+      - csv_files_gpt4o/eval_faithfulness_03-07-2024_0342.csv.csv
+      - csv_files_llama3.1_8b/eval_faithfulness_03-07-2024_0206.csv
+      
+      # # customized_matrics
+      # - csv_hr_files_gpt4o/eval_customized_metrics_ #....
+      # - csv_hr_files_llama3.1_8b/eval_customized_metrics_ #....
+
+      # # answer_relevancy
+      # - csv_hr_files_gpt4o/eval_ansrelevancy_ #....
+      # - csv_hr_files_llama3.1_8b/eval_ansrelevancy_ #....

@@ -1,0 +1,11 @@
+.env
+*.egg_info
+your_project_name.egg-info/
+*.log
+csv_*/
+your_project_name.egg-info/
+*.DS_Store
+text/
+__pycache__/
+*.pyc
+*.csv
