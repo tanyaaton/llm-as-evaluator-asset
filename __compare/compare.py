@@ -18,13 +18,16 @@ else:
 
 
 with open(f'{file_location}/compare_{metric_name}.txt', 'w') as f:
+    result_df = pd.DataFrame()
     for i in file_name_list:
         data_df = pd.read_csv(f'{file_location}{i}')
         print(i)
-        # mean = round(float(data_df.loc[:,["faithfuln"]].mean()),3)
         mean_df = data_df.loc[:,[f"{column_name}"]].dropna()
         mean_array = mean_df.to_numpy()
         mean = round(np.average(mean_array),5)
         print(mean)
+        result_df.loc[0,[f'{i}']]=mean
         f.write(i[:-20]+'\n')
         f.write(f'faithfulness mean = {mean}\n')
+    result_df.to_csv(f'{file_location}compare_{metric_name}.csv')
+    result_df.to_excel(f'{file_location}compare_{metric_name}.xlsx')
