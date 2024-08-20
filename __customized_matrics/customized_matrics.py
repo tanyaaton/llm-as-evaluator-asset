@@ -46,12 +46,11 @@ for i in content_df.index:
     context = content_df.loc[i,'contexts']
     groundtruth = content_df.loc[i,'groundtruth']
     question = content_df.loc[i,'question']
-
+    print('--prompt--')
     message = prompt_generation(context, question, groundtruth, answer)
     prompt = get_prompt_template(eval_model, message)
-    print('--prompt--')
     response = eval_model.generate_text(prompt)
-    print('r-',response)
+    print('--response--',response)
     new_df.loc[i,'response'] = int(response[0])
 
 end = time.time()
@@ -66,8 +65,3 @@ print('customized metric score = ', mean)
 print('exporting csv...')
 new_df.to_csv(f'{file_location}/eval_customized_metrics_{formatted_datetime}.csv')
 new_df.to_csv(f'{file_location}/eval_customized_metrics_{formatted_datetime}.csv')
-
-
-
-# recording_results_to_csv(qa_data, responses, 'mpt-30b', 'used mpt-30b, and no trans', "EN", total_time_taken, 'results/qa_answer_mpt-30b.csv')
-# recording_results_to_csv(qa_data, responses, name, '', "", total_time_taken, f'scoring-llama3/{name}.csv')

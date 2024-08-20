@@ -1,19 +1,3 @@
-# def llama3_prompt(messages):
-#     current_prompt = ""
-#     for i in range(len(messages)):
-#         print(messages)
-#         message = messages[i]
-#         if message["role"] == "system":
-#             pre_text = "<|begin_of_text|><|start_header_id|>system<|end_header_id|>"
-#         elif message["role"] == "user":
-#             pre_text = "<|begin_of_text|><|start_header_id|>user<|end_header_id|>"
-#         elif message["role"] == "assistant":
-#             pre_text = "<|begin_of_text|><|start_header_id|>assistant<|end_header_id|>"
-#         current_prompt += pre_text + message["content"] + "<|eot_id|>"
-#     current_prompt += "<|begin_of_text|><|start_header_id|>assistant<|end_header_id|>"
-#     print(current_prompt)
-#     return current_prompt
-
 def prompt_generation(reference, question, written_answer, answer):
     messages = {
         "messages": [
@@ -58,7 +42,7 @@ Qualitative Feedback:
 Compare the model response with the human written response as the ground truth, to grade the model response out of 10.
 
 Response Format:
-Score out of 10: [8]
+Score out of 10: []
 
 Response:""",
             "role": "user"
@@ -69,5 +53,4 @@ Response:""",
             },
         ]
     }
-    # return llama3_prompt(messages["messages"])
     return messages["messages"]

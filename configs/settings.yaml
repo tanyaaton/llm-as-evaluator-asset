@@ -3,11 +3,11 @@ default:
 
 development:
   generate_answer:
-    question_csv_location: csv_files_example/ # change location
+    question_csv_location: csv_files_example/csv_files_llama3.1_8b/ # change
     question_csv_name: question.csv # change
     llm_generate:
       source: watsonxai # choose: [watsonxai, openai, huggingface]
-      name: meta-llama/llama-3-1-8b-instruct # Input LLM ID (eg. mistralai/mistral-large , meta-llama/llama-3-1-8b-instruct , gpt-3.5-turbo-0125)
+      name: meta-llama/llama-3-1-70b-instruct # Input LLM ID (eg. mistralai/mistral-large , meta-llama/llama-3-1-8b-instruct , gpt-3.5-turbo-0125)
       decoding_method: "greedy"
       max_new_tokens: 500
       min_new_tokens: 30
@@ -19,8 +19,8 @@ development:
       overlap_size: 200
 
   faithfulness:
-    content_csv_location: csv_files_example/ # change location
-    content_csv_name: content.csv # file generated from generate_answer.py
+    content_csv_location: csv_files_example/csv_files_llama3.1_8b/ # change
+    content_csv_name: content.csv # generated from generate_answer.py
     llm_divide:
       source: watsonxai
       name: meta-llama/llama-3-1-70b-instruct
@@ -41,7 +41,7 @@ development:
       prompt_location: 
 
   answer_relevancy:
-    content_csv_location: csv_files_example/ # change
+    content_csv_location: csv_files_example/csv_files_llama3.1_8b/ # change
     content_csv_name: content.csv # file generated from generate_answer.py
     embedder_model: 
       # source: watsonxai
@@ -57,9 +57,9 @@ development:
       repetition_penalty: 1
 
   customized_matrics:
-    content_csv_location: csv_files_example/ # change
-    content_csv_name: content.csv # file generated from generate_answer.py
-    ground_truth_csv_location: csv_files_example/groundtruth.csv # change
+    content_csv_location: csv_files_example/csv_files_llama3.1_8b/ # change
+    content_csv_name: content.csv # generated from generate_answer.py
+    ground_truth_csv_location: csv_files_example/csv_files_llama3.1_8b/groundtruth.csv # change
     llm_eval:
       source: watsonxai 
       name: meta-llama/llama-3-1-70b-instruct 
@@ -76,7 +76,7 @@ development:
     file_name_list:
       # faithfulness
       - csv_files_gpt4o/eval_faithfulness_03-07-2024_0342.csv.csv
-      - csv_files_llama3.1_8b/eval_faithfulness_03-07-2024_0206.csv
+      - csv_files_llama3.1_8b/eval_faithfulness_20-08-2024_1044.csv.csv
       
       # # customized_matrics
       # - csv_hr_files_gpt4o/eval_customized_metrics_ #....

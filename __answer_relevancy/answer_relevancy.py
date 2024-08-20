@@ -118,5 +118,5 @@ formatted_datetime = now.strftime("%d-%m-%Y_%H%M")
 
 new_df.to_csv(f'{file_location}eval_ansrelevancy_{formatted_datetime}.csv')
 new_df.to_excel(f'{file_location}excel/eval_ansrelevancy_{formatted_datetime}.xlsx')
-content_df.to_csv(f'{file_location}eval_ansrelevancy_detial_{formatted_datetime}.csv')
-content_df.to_excel(f'{file_location}excel/eval_ansrelevancy_detial_{formatted_datetime}.xlsx')
+content_df.to_csv(f'{file_location}eval_ansrelevancy_detail_{formatted_datetime}.csv')
+content_df.to_excel(f'{file_location}excel/eval_ansrelevancy_detail_{formatted_datetime}.xlsx')

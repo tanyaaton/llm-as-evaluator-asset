@@ -49,7 +49,7 @@ formatted_datetime = now.strftime("%d-%m-%Y_%H%M")
 new_df = store_divided_answer_found(content_df, divide_model=divide_model, d_mode=d_mode, eval_model=eval_model, e_mode=e_mode)
 new_ff_df = new_df.loc[:,["question","answer","contexts","faithfuln"]]
 
-mean_df = data_df.loc[:,["faithfuln"]].dropna()
+mean_df = new_ff_df.loc[:,["faithfuln"]].dropna()
 mean_array = mean_df.to_numpy()
 mean = round(np.average(mean_array),5)
 print('faithfulness = ',mean)
