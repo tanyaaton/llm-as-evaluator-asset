@@ -7,3 +7,4 @@ your_project_name.egg-info/
 text/
 __pycache__/
 *.pyc
+csv_files_example/csv_files_llama3_405
