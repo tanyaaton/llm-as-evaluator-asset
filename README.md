@@ -113,20 +113,20 @@ To run this function
 python __customized_matrics/customized_matrics.py
 ```
 <br/>
-After run customized_metrics.py, `eval_customized_metrics_xx-xx-xxxx_xxxx.csv` will be generated in the folder specified
+After run customized_metrics.py, **eval_customized_metrics_xx-xx-xxxx_xxxx.csv** will be generated in the folder specified
 
 
 ## STEP 4: COMPARE
 
 **Input** ➡️ `eval_xxxxxxxxxxx.csv` file, contains results of evaluation run in STEP 2: EVALUATION<br/>
 <br/>
-**Output** ➡️  `compare_xxxx.txt` file, contain average scores of the metrics you want to compare 
+**Output** ➡️  `compare_xxxx.txt` file, contain average scores of the metrics you want to compare<br/>
 
-<br/>
 **compare.py**<br/>
 To run this function
-1. In the `setting.yaml` file, in the `compare` session
-&nbsp;&nbsp;&nbsp;&nbsp;1.1 Store your `file_name_list`, which is the list of **eval** file you want to compare
+1. In the `setting.yaml` file, in the `compare` session<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;1.1 Store your `file_name_list`, which is the list of **eval** file you want to compare<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;1.2 in `metric` session, please choose the evaluation result you want to compare form `[faitnfulness, answer_relevancy, customized_matrics]`, The metric should match with the file name
 3. Go to your terminal
 4. cd in to the `llm-as-evaluator-main` folder
 5. run the following command to evaluated faitfulness<br/>
