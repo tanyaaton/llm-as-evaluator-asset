@@ -2,9 +2,7 @@
 *.egg_info
 your_project_name.egg-info/
 *.log
-your_project_name.egg-info/
 *.DS_Store
 text/
 __pycache__/
 *.pyc
-csv_files_example/csv_files_llama3_405

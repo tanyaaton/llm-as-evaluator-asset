@@ -1,4 +1,0 @@
-csv_files_llama3.1_8b/eval_ansrelevancy
-faithfulness mean = 0.73761
-csv_files_llama3_405/eval_ansrelevancy
-faithfulness mean = 0.56758
