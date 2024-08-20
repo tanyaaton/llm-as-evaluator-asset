@@ -7,4 +7,3 @@ your_project_name.egg-info/
 text/
 __pycache__/
 *.pyc
-*.csv
